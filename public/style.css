@@ -31,9 +31,11 @@ h2 {
 }
 
 footer {
+  display: flex;
   display: block;
   position: fixed;
   bottom: 0;
+  right: 0;
   font-size: 12px;
 }
 
@@ -52,3 +54,5 @@ form > input {
   color: whitesmoke;
   background-color: rgb(175, 170, 170);
 }
+
+
