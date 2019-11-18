@@ -10,3 +10,6 @@ plain for now but should fill with notes on what has been done.
 shown in the .gif
 
 -credits text was positioned to the right as requested
+
+-struggled to get routing to work (still haven't figured out how to use the 2 .js files together)
+ but here is the most recent update on my work

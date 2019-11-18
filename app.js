@@ -29,7 +29,28 @@ function getRandomQuote() {
 app.use(cors());
 app.use(express.static("public"));
 
-app.get("/", (req, res) => res.send("index"));
+let txt_path = document.getElementById('text');
+
+// attempt to print to h1 tag
+// app.get("/quotes", (req,res) => {
+//   res.render('./index.html',
+//     'txt_path.innerHTML=quotes')
+//   });
+
+//neat attempt - tried to print quotes on separate lines
+// app.get("/quotes", (req, res) => res.write(
+//   function neatPrint() {
+//     for(let x = 0; x <= length(quotes); x++) {
+//          return quotes[x];
+//   }
+//     res.end();
+// }));
+
+
+  //messier version:
+  // app.get("/quotes", (req,res) => res.send(quotes));
+
+
 
 // write route to get all quotes below this line
 

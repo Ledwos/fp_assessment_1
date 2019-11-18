@@ -1,6 +1,6 @@
 $("form").submit(event => {
   event.preventDefault();
-  axios.post("").then(response => {
+  axios.post("./index.html").then(response => {
     quote = response.data;
     $("#text").css({
       "text-align": "center",
