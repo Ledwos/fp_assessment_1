@@ -23,51 +23,27 @@ quotes = [
 
 function getRandomQuote() {
   index = Math.floor(Math.random() * quotes.length);
-  return quotes[4];
+  return quotes[index];
 }
 
 app.use(cors());
 app.use(express.static("public"));
 
-let txt_path = document.getElementById('text');
+app.get("/", (req, res) => res.send("index"));
 
-// attempt to print to h1 tag
-// app.get("/quotes", (req,res) => {
-//   res.render('./index.html',
-//     'txt_path.innerHTML=quotes')
-//   });
+app.get("/quotes", (req, res) => res.send(quotes));
 
-//neat attempt - tried to print quotes on separate lines
-// app.get("/quotes", (req, res) => res.write(
-//   function neatPrint() {
-//     for(let x = 0; x <= length(quotes); x++) {
-//          return quotes[x];
-//   }
-//     res.end();
-// }));
+app.get("/randomQuote", (req, res) => res.send(getRandomQuote()));
 
-
-  //messier version:
-  // app.get("/quotes", (req,res) => res.send(quotes));
-
-
-
-// write route to get all quotes below this line
-
-// (insert your code here)
-
-//---------------------------
-
-// write route to get a random quote below this line
-
-// (insert your code here)
-
-//---------------------------
-
-// make sure route can handle errors if index is out of range
-
-app.get("/quotes/:index", (req, res) => res.send(quotes[req.params.index]));
-
-//---------------------------
+app.get("/quotes/:index", (req, res) => {
+  let index = parseInt(req.params.index);
+  if (index >= quotes.length || index < 1) {
+    res.send({
+      error: `Choose a number between 1 and ${quotes.length}`
+    });
+  } else {
+    res.send(quotes[index - 1]);
+  }
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
